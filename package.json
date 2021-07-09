@@ -1,0 +1,25 @@
+{
+  "name": "meta_assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm install && npm run-script build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zuka98/meta_assignment.git"
+  },
+  "author": "Zuka Murvanidze",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zuka98/meta_assignment/issues"
+  },
+  "homepage": "https://github.com/Zuka98/meta_assignment#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
+  }
+}
