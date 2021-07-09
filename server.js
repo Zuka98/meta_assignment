@@ -16,13 +16,11 @@ const client = new Client({
 
 client.connect()
 
-// client.query('CREATE TABLE imdb_table (imdb_id VARCHAR(50) NOT NULL PRIMARY KEY, title VARCHAR(200), year int, type varchar(50))', (err, res) => {
-//   console.log(err, res)
-// })
+client.query('CREATE TABLE imdb_table (imdb_id VARCHAR(50) NOT NULL PRIMARY KEY, title VARCHAR(200), year int, type varchar(50))', (err, res) => {})
 
-// client.query('CREATE TABLE posters (imdb_id VARCHAR(50) NOT NULL PRIMARY KEY, url VARCHAR(300))', (err, res) => {
-//   console.log(err, res)
-// })
+client.query('CREATE TABLE posters (imdb_id VARCHAR(50) NOT NULL PRIMARY KEY, url VARCHAR(300))', (err, res) => {
+  // if (err) console.log(err);
+})
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -35,15 +33,26 @@ app.get('/api/*', (req, res) => {
   let url2 = "http://www.omdbapi.com/?s=Matrix%20Reloaded&apikey=720c3666";
   let url3 = "http://www.omdbapi.com/?s=Matrix %20Revolutions&apikey=720c3666";
  
-
   //Not the best approach but using url path to determine which url to fetch from
-  let url = url1
-  if (req.path.split("/")[2].localeCompare('btn2') == 0){
-    url = url2;
+  let url = '';
+  switch(req.path.split("/")[2]){
+    case 'btn1': 
+      url = url1;
+      break;
+    case 'btn2': 
+      url = url2;
+      break;
+    case 'btn3':
+      url = url3;
+      break;
   }
-  else if (req.path.split("/")[2].localeCompare('btn3') == 0) { 
-    url = url3;
-  } 
+  
+  console.log(req.originalUrl);
+  if (!url){
+    res.json({"Response": "False"})
+    return;
+  }
+  
 
   let data = "";
   http.get(url, resp =>{
