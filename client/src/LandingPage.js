@@ -79,7 +79,7 @@ export default function LandingPage() {
   const [records, setData] = React.useState(null);
 
   const handleClick = async(name) => {
-    let data = await fetch("/api/" + name)
+    await fetch("/api/?button=" + name)
     .then((res) => res.json())
     .then((res) => setData(res));
   }

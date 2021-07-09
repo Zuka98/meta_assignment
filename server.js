@@ -4,6 +4,7 @@ const path = require('path');
 const express = require("express");
 const http = require("http");
 const { Pool, Client } = require('pg')
+const url = require('url');
 
 
 const client = new Client({
@@ -33,9 +34,10 @@ app.get('/api/*', (req, res) => {
   let url2 = "http://www.omdbapi.com/?s=Matrix%20Reloaded&apikey=720c3666";
   let url3 = "http://www.omdbapi.com/?s=Matrix %20Revolutions&apikey=720c3666";
  
-  //Not the best approach but using url path to determine which url to fetch from
+  
+  let reqURL = new URL("https://localhost" + req.originalUrl);
   let url = '';
-  switch(req.path.split("/")[2]){
+  switch(reqURL.searchParams.get('button')){
     case 'btn1': 
       url = url1;
       break;
@@ -46,14 +48,13 @@ app.get('/api/*', (req, res) => {
       url = url3;
       break;
   }
-  
-  console.log(req.originalUrl);
+ 
   if (!url){
     res.json({"Response": "False"})
     return;
   }
-  
 
+  
   let data = "";
   http.get(url, resp =>{
     resp.on("data", chunk=>{
