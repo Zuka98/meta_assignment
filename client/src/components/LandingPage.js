@@ -47,10 +47,10 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(4, 0, 4),
   },
   heroButtons: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(2),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     height: '100%',// maxHeight: '100%',
     width: '100%',
-    // display: 'flex',
+    display: 'flex',
     flexDirection: 'column',
     padding: '10px',
   },
@@ -105,20 +105,20 @@ export default function LandingPage() {
             </Typography>
 
             <div className={classes.heroButtons}>
-              <Grid container spacing={3} justifyContent="center">
+              <Grid container spacing={2} justifyContent="center">
                 <Grid item>
-                  <Button variant="outlined" color="primary" onClick={e => handleClick("btn1")}>
-                    Button 1
+                  <Button id="btn1" variant="outlined" color="primary" onClick={e => handleClick("btn1")}>
+                    1
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary" onClick={e => handleClick("btn2")}>
-                    Button 2
+                  <Button id="btn2" variant="outlined" color="primary" onClick={e => handleClick("btn2")}>
+                    2
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary" onClick={e => handleClick("btn3")}>
-                    Button 3
+                  <Button id="btn3" variant="outlined" color="primary" onClick={e => handleClick("btn3")}>
+                    3
                   </Button>
                 </Grid>
               </Grid>

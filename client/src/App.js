@@ -2,17 +2,9 @@
 
 import React from "react";
 import "./App.css";
-import LandingPage from "./LandingPage";
+import LandingPage from "./components/LandingPage";
 
 function App() {
-  const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
   return (
     <div className="App">
       <LandingPage />
