@@ -55,17 +55,17 @@ const useStyles = makeStyles((theme) => ({
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
+    paddingBottom: theme.spacing(6),
   },
   card: {
-    height: '100%',// maxHeight: '100%',
+    height: '100%',
     width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
+    // display: 'flex',
+    // flexDirection: 'column',
     padding: '10px',
   },
   cardMedia: {
-    paddingTop: '75%', // 16:9 56.25%
+    paddingTop: '75%',
   },
   cardContent: {
     flexGrow: 1,
@@ -99,7 +99,7 @@ export default function LandingPage() {
         </Toolbar>
       </AppBar>
       <main>
-        <div className={classes.heroContent} style={{height:400, marginTop: 30}}>
+        <div className={classes.heroContent} style={{height:350, marginTop: 30}}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Welcome!
@@ -125,8 +125,11 @@ export default function LandingPage() {
         {!records && <PlaceHolder title="No Information Available!" subtitle = "Press the buttons to load the data!" />}
         {(records && records.Response == "False") && <PlaceHolder title="Results Not Found!" subtitle = "Please try different button!" /> }
 
-        <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={3}>
+        
+        <Container className={classes.cardGrid} maxWidth="lg">
+          <Grid container spacing={3}
+            direction="row" justify="center"  alignItems="center" style={{ minHeight: '100vh' }} >
+          
             {(records && records.Response == "True") && records.Search.map((card) => (
               <Grid item key={card} xs={8} sm={6} md={4}>
                 <Card className={classes.card}>
@@ -154,14 +157,9 @@ export default function LandingPage() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
       <footer className={classes.footer}>
-        {/* <Typography variant="h6" align="center" gutterBottom>
-        {/* Meta Assignment Web Page */}
-        {/* </Typography> } */}
         <Copyright />
       </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }

@@ -13,8 +13,3 @@ test('3 Buttons are rendered', () => {
     const buttons = screen.getAllByRole('button');
     expect(buttons).toHaveLength(3);
 });
-
-
-// test('Test Button1 Onclick Event', () => {
-
-// });
