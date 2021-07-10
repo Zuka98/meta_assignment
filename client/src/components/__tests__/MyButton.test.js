@@ -11,6 +11,7 @@ describe('MyButton', () => {
   it('Should be defined', () => {
     expect(MyButton).toBeDefined();
   });
+  
   it('Should render correctly', () => {
     const tree = shallow(
       <MyButton name='1' handleClick={mockFn} />
