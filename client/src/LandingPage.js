@@ -30,7 +30,7 @@ function Copyright() {
 
 function PlaceHolder(props){
   return (
-    <div style={{ padding: "10%"}}>
+    <div style={{ padding: "10%", fontSize: "15%"}}>
         <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
           {props.title}
         </Typography>
@@ -50,19 +50,21 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(3),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
   card: {
-    height: '100%',
-    display: 'flex',
+    height: '100%',// maxHeight: '100%',
+    width: '100%',
+    // display: 'flex',
     flexDirection: 'column',
+    padding: '10px',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '75%', // 16:9 56.25%
   },
   cardContent: {
     flexGrow: 1,
@@ -103,7 +105,7 @@ export default function LandingPage() {
             </Typography>
 
             <div className={classes.heroButtons}>
-              <Grid container spacing={2} justifyContent="center">
+              <Grid container spacing={3} justifyContent="center">
                 <Grid item>
                   <Button variant="outlined" color="primary" onClick={e => handleClick("btn1")}>
                     Button 1
@@ -126,12 +128,12 @@ export default function LandingPage() {
 
 
         {!records && <PlaceHolder title="No Information Available!" subtitle = "Press the buttons to load the data!" />}
-        {(records && records.Response == "False") && <PlaceHolder title="Results Not Found!" subtitle = "Please try different button! :D" /> }
+        {(records && records.Response == "False") && <PlaceHolder title="Results Not Found!" subtitle = "Please try different button!" /> }
 
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={3}>
             {(records && records.Response == "True") && records.Search.map((card) => (
-              <Grid item key={card} xs={3} sm={6} md={4}>
+              <Grid item key={card} xs={8} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
