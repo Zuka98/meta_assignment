@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import MyButton from './MyButton'
 
 
 function Copyright() {
@@ -107,19 +108,13 @@ export default function LandingPage() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
                 <Grid item>
-                  <Button id="btn1" variant="outlined" color="primary" onClick={e => handleClick("btn1")}>
-                    1
-                  </Button>
+                  <MyButton name="1" handleClick={handleClick}/>
                 </Grid>
                 <Grid item>
-                  <Button id="btn2" variant="outlined" color="primary" onClick={e => handleClick("btn2")}>
-                    2
-                  </Button>
+                  <MyButton name="2" handleClick={handleClick}/>
                 </Grid>
                 <Grid item>
-                  <Button id="btn3" variant="outlined" color="primary" onClick={e => handleClick("btn3")}>
-                    3
-                  </Button>
+                  <MyButton name="3" handleClick={handleClick}/>
                 </Grid>
               </Grid>
             </div>
